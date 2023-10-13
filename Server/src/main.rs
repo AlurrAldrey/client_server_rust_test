@@ -24,6 +24,7 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream) {
+    println!("handle_connection");
     let buf_reader = BufReader::new(&mut stream);
     let request_line = buf_reader.lines().next().unwrap().unwrap();
     println!("We got: {}", request_line);
@@ -33,7 +34,7 @@ fn handle_connection(mut stream: TcpStream) {
             "{status_line}\r\n"
         );
         
-        thread::sleep(Duration::new(2, 0));
+        thread::sleep(Duration::new(10, 0));
         stream.write_all(response.as_bytes()).unwrap();
 
     } else {        

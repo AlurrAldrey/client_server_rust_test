@@ -63,7 +63,7 @@ impl Worker {
             match message {
                 Ok(job) => {
                     println!("Worker {id} got a job; executing.");
-                    job.();
+                    job();
                     println!("Worker {id} is done");
                 }
                 Err(_) => {
