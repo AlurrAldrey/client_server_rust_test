@@ -63,8 +63,8 @@ impl Worker {
             match message {
                 Ok(job) => {
                     println!("Worker {id} got a job; executing.");
-
-                    job();
+                    job.();
+                    println!("Worker {id} is done");
                 }
                 Err(_) => {
                     println!("Worker {id} disconnected; shutting down.");
@@ -72,7 +72,7 @@ impl Worker {
                 }
             }
         });
-
+        println!("Returning worker {id}");
         Worker {
             id,
             thread: Some(thread),
