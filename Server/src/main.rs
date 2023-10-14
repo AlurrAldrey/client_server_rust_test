@@ -24,9 +24,10 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream) {
-    println!("handle_connection");
+    
     let buf_reader = BufReader::new(&mut stream);
     let request_line = buf_reader.lines().next().unwrap().unwrap();
+
     println!("We got: {}", request_line);
     if request_line == "Sleep" {
         let status_line = "Just woke, what a nap of 10 seconds :D\n";
@@ -38,7 +39,9 @@ fn handle_connection(mut stream: TcpStream) {
         stream.write_all(response.as_bytes()).unwrap();
 
     } else {        
-        
-        stream.write_all(request_line.as_bytes()).unwrap();
+        let response = format!(
+            "{request_line}\r\n"
+        );
+        stream.write_all(response.as_bytes()).unwrap();
     }
 }

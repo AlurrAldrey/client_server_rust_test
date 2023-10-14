@@ -5,7 +5,7 @@ use std::io::{self,prelude::*,BufReader,Write};
 
 fn main() {
     
-    let vec_messages = vec!["C1Sleep\n", "C1Paso1\n", "C1Paso2\n", "C1Paso3\n"];
+    let vec_messages = vec!["C2Paso1\n", "C2Paso2\n", "Sleep\n", "C2Paso3\n"];
     
     for message in vec_messages {
         
